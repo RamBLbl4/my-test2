@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Тест по обработке изображений</title>
   <!-- Подключаем CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+  <link rel="stylesheet" href="static/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs @latest/Sortable.min.js"></script>
 </head>
 <body>
-<h1>Тест по курсу "Методы и средства обработки изображений</h1>
+<h1>Тест по курсу "Методы и средства обработки изображений"</h1>
 
 <div id="instructions" style="text-align: center; margin-top: 20px; font-size: 1.3rem; font-weight: 500; color: #333; line-height: 2;">
   Чтобы начать тест, введите свою Фамилию, Имя и Отчество, а также номер группы.<br>
@@ -37,16 +37,14 @@
 <div id="results" style="display:none;"></div>
 
 <!-- Подключаем скрипт -->
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="static/script.js"></script>
 
 <!-- Скрипты для динамического добавления вопросов -->
-
-
-
 <script>
-  const DCT0Url = "{{ url_for('static', filename='lenna.jpg') }}";
-  const DCT1Url = "{{ url_for('static', filename='dct_idct_resultLENNA20.png') }}";
-  const DCT2Url = "{{ url_for('static', filename='dct_quant_idct_resultLENNA20.png') }}";
+  // Укажи корректные пути к изображениям внутри папки static
+  const DCT0Url = "static/lenna.jpg";
+  const DCT1Url = "static/dct_idct_resultLENNA20.png";
+  const DCT2Url = "static/dct_quant_idct_resultLENNA20.png";
 
   // Добавляем новый вопрос
   testQuestions.push({
@@ -60,9 +58,6 @@
     correctAnswer: 0
   });
 </script>
-
-
-
 
 </body>
 </html>
