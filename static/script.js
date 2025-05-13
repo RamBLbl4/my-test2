@@ -356,7 +356,7 @@ const questions2 = [
 
   {
     text: "Какой метод уменьшения шума используется на этом фото?",
-    imageUrl: "/static/metod.png",  
+    imageUrl: "static/metod.png",  
     options: [
       "Метод скользящего среднего",
       "Фильтр Гаусса",
@@ -369,7 +369,7 @@ const questions2 = [
 
    {
     text: "Какой метод уменьшения шума используется на этом фото?",
-    imageUrl: "/static/metod2.png",  
+    imageUrl: "static/metod2.png",  
     options: [
       "Метод скользящего среднего",
       "Фильтр Гаусса",
@@ -383,9 +383,9 @@ const questions2 = [
   {
   text: "Какое изображение лучше всего подходит для сжатия?",
   images: [
-    "/static/lenna.bmp",  // Путь к первому изображению
-    "/static/baboon.bmp", // Путь ко второму изображению
-    "/static/pepper.bmp"  // Путь к третьему изображению
+    "static/lenna.bmp",  // Путь к первому изображению
+    "static/baboon.bmp", // Путь ко второму изображению
+    "static/pepper.bmp"  // Путь к третьему изображению
   ],
   options: [
     "Lenna",   // Вариант 1
@@ -399,8 +399,8 @@ const questions2 = [
     type: "matching",
     text: "Соотнесите изображения с методами, которые к ним применены.",
     images: [
-      "/static/lenna_denoised_mean.png",
-      "/static/lenna_denoised_mean222.png"
+      "static/lenna_denoised_mean.png",
+      "static/lenna_denoised_mean222.png"
     ],
     definitions: [
       "Скользящего среднего",
@@ -419,8 +419,8 @@ const questions3 = [
     type: "matching",
     text: "Соотнесите изображения с моделями шума, которые к ним применены",
     images: [
-      "/static/SaltPepperGraySamolet.png",
-      "/static/GaussGraySamolet.png"
+      "static/SaltPepperGraySamolet.png",
+      "static/GaussGraySamolet.png"
     ],
     definitions: [
       "Аддитивный",
@@ -434,8 +434,8 @@ const questions3 = [
     type: "matching",
     text: "Соотнесите изображения с моделями шума, которые к ним применены",
     images: [
-      "/static/impulse_noise.png",
-      "/static/gaussian_noise.png"
+      "static/impulse_noise.png",
+      "static/gaussian_noise.png"
     ],
     definitions: [
       "Аддитивный",
@@ -449,8 +449,8 @@ const questions3 = [
     type: "matching",
     text: "Соотнесите изображения с моделями шума, которые к ним применены",
     images: [
-      "/static/noise_image_1.png",
-      "/static/noise_image_2.png"
+      "static/noise_image_1.png",
+      "static/noise_image_2.png"
     ],
     definitions: [
       "Аддитивный",
@@ -467,9 +467,9 @@ const questions4 = [
     
   text: "Ниже представлены три изображения после применения трех методов интерполяции. Какой метод интерполяции применен ко второму изображению?",
   images: [
-    "/static/interpolation_bilinear_ZOOMMAP.png",  // Путь к первому изображению
-    "/static/interpolation_nearest_ZOOMMAP.png", // Путь ко второму изображению
-    "/static/interpolation_bicubic_ZOOMMAP.png"  // Путь к третьему изображению
+    "static/interpolation_bilinear_ZOOMMAP.png",  // Путь к первому изображению
+    "static/interpolation_nearest_ZOOMMAP.png", // Путь ко второму изображению
+    "static/interpolation_bicubic_ZOOMMAP.png"  // Путь к третьему изображению
   ],
   options: [
     "Интерполяция по ближайшему соседу",
@@ -484,9 +484,9 @@ const questions4 = [
     type: "matching",
     text: "Соотнесите изображения с методами интерполяции, которые к ним применены",
     images: [
-      "/static/interpolation_bilinear_ZOOMTEXT1.png",  // Путь к первому изображению
-      "/static/interpolation_nearest_ZOOMTEXT1.png", // Путь ко второму изображению
-      "/static/interpolation_bicubic_ZOOMTEXT1.png"  // Путь к третьему изображению
+      "static/interpolation_bilinear_ZOOMTEXT1.png",  // Путь к первому изображению
+      "static/interpolation_nearest_ZOOMTEXT1.png", // Путь ко второму изображению
+      "static/interpolation_bicubic_ZOOMTEXT1.png"  // Путь к третьему изображению
     ],
     definitions: [
       "Интерполяция по ближайшему соседу",
@@ -506,9 +506,9 @@ const questions5 = [
     type: "matching",
     text: "Соотнесите изображения, к которым применено квантование, с параметром R",
     images: [
-      "/static/dct_quant_idct_result_ZOOMLENNA30.png",  // Путь к первому изображению
-      "/static/dct_quant_idct_result_ZOOMLENNA5.png",
-      "/static/lenna.jpg" // Путь ко второму изображению
+      "static/dct_quant_idct_result_ZOOMLENNA30.png",  // Путь к первому изображению
+      "static/dct_quant_idct_result_ZOOMLENNA5.png",
+      "static/lenna.jpg" // Путь ко второму изображению
        
     ],
     definitions: [
@@ -528,8 +528,8 @@ const questions6 = [
     type: "matching",
     text: "Соотнесите изображения с методами фильтрации шума, которые к ним применены",
     images: [
-      "/static/metodsrednegoRGB.png",  // Путь к первому изображению
-      "/static/median_filter_3x3RGB.png"  // Путь к третьему изображению
+      "static/metodsrednegoRGB.png",  // Путь к первому изображению
+      "static/median_filter_3x3RGB.png"  // Путь к третьему изображению
     ],
     definitions: [
       "Медианный фильтр",
@@ -543,8 +543,8 @@ const questions6 = [
     type: "matching",
     text: "Соотнесите изображения с методами фильтрации шума, которые к ним применены",
     images: [
-      "/static/median_filter_3x3RGB.png",  // Путь к первому изображению
-      "/static/filtrGAussaRGB.png"  // Путь к третьему изображению
+      "static/median_filter_3x3RGB.png",  // Путь к первому изображению
+      "static/filtrGAussaRGB.png"  // Путь к третьему изображению
     ],
     definitions: [
       "Медианный фильтр",
@@ -558,9 +558,9 @@ const questions6 = [
     type: "matching",
     text: "Соотнесите изображения, полученные после применения метода скользящего среднего, с апертурой",
     images: [
-      "/static/metodsrednegoRGB.png",  // Путь к первому изображению
-      "/static/metodsrednegoAper35.png",
-      "/static/metodsrednegoAper15.png"  // Путь к третьему изображению
+      "static/metodsrednegoRGB.png",  // Путь к первому изображению
+      "static/metodsrednegoAper35.png",
+      "static/metodsrednegoAper15.png"  // Путь к третьему изображению
     ],
     definitions: [
       "7",
