@@ -1,0 +1,200 @@
+/* Подключим Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+/* Общие стили */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(120deg, #f0f4ff, #ffffff);
+  color: #333;
+  overflow-x: hidden; /* Запрещаем горизонтальную прокрутку */
+}
+
+h1, h2 {
+  text-align: center;
+  font-weight: 500;
+}
+
+#start-container, #questions-container, #results {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+#start-container h2,
+#results-container h2 {
+  margin-top: 0;
+}
+
+input[type="text"] {
+  display: block;
+  width: 90%;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  cursor: pointer;
+  background-color: #4b89dc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #3a71b3;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.question-text {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+}
+
+.answer-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.answer-option {
+  padding: 10px;
+  background-color: #f2f6ff;
+  border: 1px solid #dfe7fb;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.answer-option:hover {
+  background-color: #e0ecff;
+  border-color: #c2d8ff;
+}
+
+.answer-option.selected {
+  background-color: #4b89dc;
+  color: #fff;
+  border-color: #3a71b3;
+  font-weight: bold;
+}
+
+#results-container {
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+}
+
+/* Стили для строки изображений */
+.images-row {
+  display: flex; /* Изображения выстраиваются горизонтально */
+  justify-content: center; /* Центрируем изображения по горизонтали */
+  gap: 10px; /* Расстояние между изображениями */
+  margin-bottom: 20px;
+}
+
+/* Стили для контейнера каждого изображения */
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Стили для самих изображений */
+.images-row img {
+  width: 400px; /* Фиксированная ширина */
+  height: 300px; /* Фиксированная высота */
+  object-fit: contain; /* Меняем на "contain" для отображения всего изображения */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Стили для номеров изображений */
+.image-number {
+  position: absolute;
+  top: 10px; /* Позиция в левом верхнем углу */
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный фон */
+  color: #fff; /* Белый текст */
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 10; /* Чтобы номер был поверх изображения */
+}
+
+/* Стили для таймера */
+#timer {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Стили для результатов вопросов */
+.question-result {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.question-result h3 {
+  margin-top: 0;
+}
+
+.question-result .answer-feedback {
+  background-color: #f9e79f;
+}
+
+/* === НОВЫЕ СТИЛИ ДЛЯ НОМЕРОВ ВОПРОСОВ === */
+#question-numbers {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column; /* Группы идут друг под другом */
+  gap: 10px; /* Расстояние между группами */
+}
+
+.question-group {
+  display: flex; /* Квадратики внутри группы выстраиваются горизонтально */
+  gap: 5px; /* Расстояние между квадратиками */
+}
+
+.question-number {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f6ff;
+  border: 1px solid #dfe7fb;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.question-number.answered {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+.question-number.current {
+  background-color: #4b89dc;
+  color: #fff;
+}

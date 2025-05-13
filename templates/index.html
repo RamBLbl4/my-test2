@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Тест по обработке изображений</title>
+  <!-- Подключаем CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+</head>
+<body>
+<h1>Тест по курсу "Методы и средства обработки изображений</h1>
+
+<div id="instructions" style="text-align: center; margin-top: 20px; font-size: 1.3rem; font-weight: 500; color: #333; line-height: 2;">
+  Чтобы начать тест, введите свою Фамилию, Имя и Отчество, а также номер группы.<br>
+  На прохождение теста вам будет дано 45 минут.
+</div>
+
+<!-- Таймер -->
+<div id="timer" style="text-align: center; margin-bottom: 20px;"></div>
+
+<!-- Контейнер для номеров вопросов -->
+<div id="question-numbers" style="position: fixed; top: 20px; right: 20px;"></div>
+
+<!-- Форма для ввода данных -->
+<div id="start-container">
+  <h2>Введите ваши данные</h2>
+  <input type="text" id="full-name" placeholder="ФИО" autocomplete="off" required>
+  <input type="text" id="group-number" placeholder="Номер группы" autocomplete="off" required>
+  <button id="start-button">Начать тест</button>
+</div>
+
+<!-- Контейнер для вопросов -->
+<div id="questions-container" style="display:none;"></div>
+
+<!-- Контейнер для результатов -->
+<div id="results" style="display:none;"></div>
+
+<!-- Подключаем скрипт -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<!-- Скрипты для динамического добавления вопросов -->
+
+
+
+<script>
+  const DCT0Url = "{{ url_for('static', filename='lenna.jpg') }}";
+  const DCT1Url = "{{ url_for('static', filename='dct_idct_resultLENNA20.png') }}";
+  const DCT2Url = "{{ url_for('static', filename='dct_quant_idct_resultLENNA20.png') }}";
+
+  // Добавляем новый вопрос
+  testQuestions.push({
+    text: "Ниже представлены три изображения: первое исходное, а остальные после применения двух методов обработки. Какой метод применен ко второму изображению?",
+    images: [DCT0Url, DCT1Url, DCT2Url],
+    options: [
+      "Прямое и обратное ДКП",
+      "ДКП с квантованием и обратным ДКП",
+      "Метод не используется"
+    ],
+    correctAnswer: 0
+  });
+</script>
+
+
+
+
+</body>
+</html>
