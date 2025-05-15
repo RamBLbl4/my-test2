@@ -925,45 +925,45 @@ function displayQuestion() {
   }
 
   if (question.type === "matching") {
-    const requiredPairs = question.correctAnswer.length;
-    const userPairs = permanentLines.length;
+    const requiredPairs = question.correctAnswer.length; // Необходимое количество пар
+    const userPairs = permanentLines.length; // Текущее количество соединений
 
+    // Если пользователь не соединил все пары — не даем перейти дальше
     if (userPairs < requiredPairs) {
       alert("Соедините все изображения с определениями!");
       return;
     }
 
-    // Собираем текущие соединения пользователя
-    const userConnections = {};
-    permanentLines.forEach(line => {
-      const imageIndex = line.startDot.closest(".left-column")
+    // Собираем ответ пользователя
+    const userAnswer = permanentLines.map(line => ({
+      imageIndex: line.startDot.closest(".left-column")
         ? line.startIndex
-        : line.endIndex;
-      const definitionIndex = line.startDot.closest(".right-column")
+        : line.endIndex,
+      definitionIndex: line.startDot.closest(".right-column")
         ? line.startIndex
-        : line.endIndex;
-      userConnections[imageIndex] = definitionIndex;
-    });
+        : line.endIndex,
+    }));
 
     // Формируем правильные ответы
-    const correctConnections = {};
-    question.correctAnswer.forEach((defIndex, imgIndex) => {
-      correctConnections[imgIndex] = defIndex;
-    });
+    const correctAnswer = question.correctAnswer.map((defIndex, imgIndex) => ({
+      imageIndex: imgIndex,
+      definitionIndex: defIndex,
+    }));
 
     // Проверяем, был ли уже засчитан балл за этот вопрос
     const wasAlreadyCorrect = selectedAnswers[currentQuestion] === "correct";
 
     // Сравниваем без учета порядка
-    const isCorrect = Object.keys(correctConnections).every(
-      key => userConnections[key] === correctConnections[key]
-    );
+    const isCorrect =
+      JSON.stringify(userAnswer.sort()) ===
+      JSON.stringify(correctAnswer.sort());
 
     // Увеличиваем счётчик ТОЛЬКО если это новый правильный ответ
     if (isCorrect && !wasAlreadyCorrect) {
       score++;
     }
 
+    // Сохраняем результат в массив selectedAnswers
     selectedAnswers[currentQuestion] = isCorrect ? "correct" : "incorrect";
     answeredQuestions[currentQuestion] = true;
   } else {
@@ -976,6 +976,7 @@ function displayQuestion() {
     // Проверяем, был ли уже засчитан балл за этот вопрос
     const wasAlreadyCorrect = selectedAnswers[currentQuestion] === question.correctAnswer;
 
+    // Увеличиваем счётчик ТОЛЬКО если это новый правильный ответ
     if (selectedAnswer === question.correctAnswer && !wasAlreadyCorrect) {
       score++;
     }
