@@ -918,7 +918,7 @@ function displayQuestion() {
 
   nextButton.style.display = "inline-block";
 
- nextButton.addEventListener("click", () => {
+  nextButton.addEventListener("click", () => {
     if (selectedAnswer === null && question.type !== "matching") {
       alert("Выберите ответ!");
       return;
@@ -996,6 +996,7 @@ function displayQuestion() {
 
   questionElement.appendChild(nextButton);
 }
+
 function updateQuestionNumbers() {
   const questionNumbersContainer = document.getElementById("question-numbers");
   questionNumbersContainer.innerHTML = '';
