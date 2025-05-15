@@ -929,14 +929,18 @@ function displayQuestion() {
 
   // Собираем ответ пользователя
   const userAnswer = permanentLines.map(line => ({
-    imageIndex: line.startDot.closest(".left-column") ? line.startIndex : line.endIndex,
-    definitionIndex: line.startDot.closest(".right-column") ? line.startIndex : line.endIndex
+    imageIndex: line.startDot.closest(".left-column")
+      ? line.startIndex
+      : line.endIndex,
+    definitionIndex: line.startDot.closest(".right-column")
+      ? line.startIndex
+      : line.endIndex,
   }));
 
   // Сравниваем с правильным ответом
   const correctAnswer = question.correctAnswer.map((defIndex, imgIndex) => ({
     imageIndex: imgIndex,
-    definitionIndex: defIndex
+    definitionIndex: defIndex,
   }));
 
   const isCorrect =
