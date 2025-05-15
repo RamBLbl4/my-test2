@@ -1005,7 +1005,7 @@ function displayQuestion() {
 });
 
 questionElement.appendChild(nextButton);
-
+}
 function updateQuestionNumbers() {
   const questionNumbersContainer = document.getElementById("question-numbers");
   questionNumbersContainer.innerHTML = '';
