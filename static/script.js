@@ -919,92 +919,82 @@ function displayQuestion() {
   nextButton.style.display = "inline-block";
 
  nextButton.addEventListener("click", () => {
-  if (selectedAnswer === null && question.type !== "matching") {
-    alert("Выберите ответ!");
-    return;
-  }
-
-  if (question.type === "matching") {
-    const requiredPairs = question.correctAnswer.length;
-    const userPairs = permanentLines.length;
-
-    if (userPairs < requiredPairs) {
-      alert("Соедините все изображения с определениями!");
-      return;
-    }
-
-    // Собираем текущие соединения пользователя
-    const userConnections = {};
-    permanentLines.forEach(line => {
-      const imageIndex = line.startDot.closest(".left-column")
-        ? line.startIndex
-        : line.endIndex;
-      const definitionIndex = line.startDot.closest(".right-column")
-        ? line.startIndex
-        : line.endIndex;
-      userConnections[imageIndex] = definitionIndex;
-    });
-
-    // Формируем правильные ответы
-    const correctConnections = {};
-    question.correctAnswer.forEach((defIndex, imgIndex) => {
-      correctConnections[imgIndex] = defIndex;
-    });
-
-    // Сравниваем без учета порядка
-    const isCorrect = Object.keys(correctConnections).every(
-      key => userConnections[key] === correctConnections[key]
-    );
-
-    // Проверяем, не был ли уже учтён балл за этот вопрос
-    const wasScoredBefore = selectedAnswers[currentQuestion] === "correct";
-
-    // Увеличиваем счётчик ТОЛЬКО если это новый правильный ответ
-    if (isCorrect && !wasScoredBefore) {
-      score++;
-    }
-
-    selectedAnswers[currentQuestion] = isCorrect ? "correct" : "incorrect";
-    answeredQuestions[currentQuestion] = true;
-  } else {
-    // Обработка обычных вопросов
-    if (selectedAnswer === null) {
+    if (selectedAnswer === null && question.type !== "matching") {
       alert("Выберите ответ!");
       return;
     }
 
-    // Проверяем, не был ли уже учтён балл за этот вопрос
-    const wasScoredBefore =
-      typeof selectedAnswers[currentQuestion] === "number" &&
-      selectedAnswers[currentQuestion] === question.correctAnswer;
+    if (question.type === "matching") {
+      const requiredPairs = question.correctAnswer.length;
+      const userPairs = permanentLines.length;
 
-    // Увеличиваем счётчик ТОЛЬКО если это новый правильный ответ
-    if (selectedAnswer === question.correctAnswer && !wasScoredBefore) {
-      score++;
-    }
+      if (userPairs < requiredPairs) {
+        alert("Соедините все изображения с определениями!");
+        return;
+      }
 
-    selectedAnswers[currentQuestion] = selectedAnswer;
-    answeredQuestions[currentQuestion] = true;
-  }
+      // Собираем текущие соединения пользователя
+      const userConnections = {};
+      permanentLines.forEach(line => {
+        const imageIndex = line.startDot.closest(".left-column")
+          ? line.startIndex
+          : line.endIndex;
+        const definitionIndex = line.startDot.closest(".right-column")
+          ? line.startIndex
+          : line.endIndex;
+        userConnections[imageIndex] = definitionIndex;
+      });
 
-  currentQuestion++;
-  selectedAnswer = null;
+      // Формируем правильные ответы
+      const correctConnections = {};
+      question.correctAnswer.forEach((defIndex, imgIndex) => {
+        correctConnections[imgIndex] = defIndex;
+      });
 
-  if (currentQuestion < testQuestions.length) {
-    displayQuestion();
-  } else {
-    if (answeredQuestions.every(answered => answered)) {
-      clearInterval(timerInterval);
-      showResults();
+      // Сравниваем без учета порядка
+      const isCorrect = Object.keys(correctConnections).every(
+        key => userConnections[key] === correctConnections[key]
+      );
+
+      if (isCorrect) {
+        score++;
+      }
+
+      selectedAnswers[currentQuestion] = isCorrect ? "correct" : "incorrect";
+      answeredQuestions[currentQuestion] = true;
     } else {
-      alert("Вы ответили не на все вопросы. Пожалуйста, ответьте на все вопросы перед завершением теста.");
-      currentQuestion = testQuestions.length - 1;
-      displayQuestion();
-    }
-  }
-});
+      // Обработка обычных вопросов
+      if (selectedAnswer === null) {
+        alert("Выберите ответ!");
+        return;
+      }
 
-questionElement.appendChild(nextButton);
+      if (selectedAnswer === question.correctAnswer) {
+        score++;
+      }
+
+      selectedAnswers[currentQuestion] = selectedAnswer;
+      answeredQuestions[currentQuestion] = true;
+    }
+
+    currentQuestion++;
+    selectedAnswer = null;
+
+    if (currentQuestion < testQuestions.length) {
+      displayQuestion();
+    } else {
+      if (answeredQuestions.every(answered => answered)) {
+        clearInterval(timerInterval);
+        showResults();
+      } else {
+        alert("Вы ответили не на все вопросы. Пожалуйста, ответьте на все вопросы перед завершением теста.");
+        currentQuestion = testQuestions.length - 1;
+        displayQuestion();
+      }
+    }
+  });
+
+  questionElement.appendChild(nextButton);
 }
 function updateQuestionNumbers() {
   const questionNumbersContainer = document.getElementById("question-numbers");
