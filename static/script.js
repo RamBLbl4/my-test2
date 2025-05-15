@@ -910,87 +910,84 @@ function displayQuestion() {
   nextButton.style.display = "inline-block";
 
   nextButton.addEventListener("click", () => {
-    if (selectedAnswer === null && question.type !== "matching") {
-      alert("Выберите ответ!");
-      return;
-    }
+  const question = testQuestions[currentQuestion];
 
-    
-    
-    if (question.type === "matching") {
-      const requiredPairs = question.correctAnswer.length;
-      const userPairs = permanentLines.length;
-      
+  if (question.type === "matching") {
+    const requiredPairs = question.correctAnswer.length;
+    const userPairs = permanentLines.length;
+
     if (userPairs < requiredPairs) {
       alert("Соедините все изображения с определениями!");
       return;
-  }
+    }
+
     const userAnswer = permanentLines.map(line => ({
       imageIndex: line.startDot.closest(".left-column") ? line.startIndex : line.endIndex,
       definitionIndex: line.startDot.closest(".right-column") ? line.startIndex : line.endIndex
-  }));
+    }));
 
     const correctAnswer = question.correctAnswer.map((defIndex, imgIndex) => ({
       imageIndex: imgIndex,
       definitionIndex: defIndex
-  }));
+    }));
 
-    const isCorrect =
-      JSON.stringify(userAnswer.sort()) ===
-      JSON.stringify(correctAnswer.sort());
+    // Сортировка по imageIndex для корректного сравнения
+    const sortedUser = [...userAnswer].sort((a, b) => a.imageIndex - b.imageIndex);
+    const sortedCorrect = [...correctAnswer].sort((a, b) => a.imageIndex - b.imageIndex);
 
-  // 🔁 Вычитаем предыдущий результат, если он был
+    const isCorrect = JSON.stringify(sortedUser) === JSON.stringify(sortedCorrect);
+
+    // Убираем предыдущий результат, если он был
     const prevAnswer = selectedAnswers[currentQuestion];
     if (prevAnswer === "correct") {
-      score--; // Убираем старый правильный ответ
-  }
-
-  // Добавляем новый результат
-  if (isCorrect) {
-    score++;
-  }
-
-  selectedAnswers[currentQuestion] = isCorrect ? "correct" : "incorrect";
-  answeredQuestions[currentQuestion] = true;
-
-} else {
-  if (selectedAnswer === null) {
-    alert("Выберите ответ!");
-    return;
-  }
-
-  // 🔁 Вычитаем предыдущий результат, если он был
-  const prevAnswer = selectedAnswers[currentQuestion];
-  if (prevAnswer !== null && prevAnswer === question.correctAnswer) {
-    score--;
-  }
-
-  // Добавляем новый результат
-  if (selectedAnswer === question.correctAnswer) {
-    score++;
-  }
-
-  selectedAnswers[currentQuestion] = selectedAnswer;
-  answeredQuestions[currentQuestion] = true;
-}
-    
-    currentQuestion++;
-    selectedAnswer = null;
-
-    if (currentQuestion < testQuestions.length) {
-      displayQuestion();
-    } else {
-      if (answeredQuestions.every(answered => answered)) {
-        clearInterval(timerInterval);
-        showResults();
-      } else {
-        alert("Вы ответили не на все вопросы. Пожалуйста, ответьте на все вопросы перед завершением теста.");
-        currentQuestion = testQuestions.length - 1;
-        displayQuestion();
-      }
+      score--;
     }
-  });
 
+    // Добавляем новый результат
+    if (isCorrect) {
+      score++;
+    }
+
+    selectedAnswers[currentQuestion] = isCorrect ? "correct" : "incorrect";
+    answeredQuestions[currentQuestion] = true;
+
+  } else {
+    if (selectedAnswer === null) {
+      alert("Выберите ответ!");
+      return;
+    }
+
+    // Убираем предыдущий результат, если он был
+    const prevAnswer = selectedAnswers[currentQuestion];
+    if (prevAnswer !== null && prevAnswer === question.correctAnswer) {
+      score--;
+    }
+
+    // Добавляем новый результат
+    if (selectedAnswer === question.correctAnswer) {
+      score++;
+    }
+
+    selectedAnswers[currentQuestion] = selectedAnswer;
+    answeredQuestions[currentQuestion] = true;
+  }
+
+  currentQuestion++;
+  selectedAnswer = null;
+
+  if (currentQuestion < testQuestions.length) {
+    displayQuestion();
+  } else {
+    if (answeredQuestions.every(answered => answered)) {
+      clearInterval(timerInterval);
+      showResults();
+    } else {
+      alert("Вы ответили не на все вопросы. Пожалуйста, ответьте на все вопросы перед завершением теста.");
+      currentQuestion = testQuestions.length - 1;
+      displayQuestion();
+    }
+  }
+});
   questionElement.appendChild(nextButton);
 }
 
@@ -1066,32 +1063,33 @@ function showResults() {
     feedback.classList.add('answer-feedback');
 
     if (question.type === "matching") {
-      // Правильные соответствия
-      const correctMapping = question.correctAnswer.map((defIndex, imgIndex) =>
-        `Изображение ${imgIndex + 1} → Определение ${defIndex + 1}`
-      ).join(", ");
+  // Выводим правильные соответствия
+  const correctMapping = question.correctAnswer.map((defIndex, imgIndex) =>
+    `Изображение ${imgIndex + 1} → Определение ${defIndex + 1}`
+  ).join(", ");
 
-      feedback.textContent = `Правильные соответствия: ${correctMapping}`;
+  feedback.textContent = `Правильные соответствия: ${correctMapping}`;
 
-      // Добавляем текст о результате: "Вы ответили верно" или "Вы ответили неправильно"
-      const finalFeedback = document.createElement("div");
-      finalFeedback.classList.add("matching-result");
-      finalFeedback.textContent = selectedAnswers[index] === "correct"
-        ? "Вы ответили верно."
-        : "Вы ответили неправильно.";
-      resultDiv.appendChild(finalFeedback);
-    } else if (selectedAnswers[index] === question.correctAnswer) {
-      feedback.textContent = `Вы ответили верно, правильный ответ: ${question.options[question.correctAnswer]}`;
-    } else {
-      feedback.textContent = `Вы ответили неправильно, правильный ответ: ${question.options[question.correctAnswer]}`;
-    }
+  // Выводим результат: "Вы ответили верно" или "Вы ответили неправильно"
+  const finalFeedback = document.createElement("div");
+  finalFeedback.classList.add("matching-result");
+  finalFeedback.textContent = selectedAnswers[index] === "correct"
+    ? "Вы ответили верно."
+    : "Вы ответили неправильно.";
+  resultDiv.appendChild(finalFeedback);
 
-    resultDiv.appendChild(feedback);
-    resultsContainer.appendChild(resultDiv);
-  });
-
-  resultsContainer.style.display = 'block';
+} else {
+  // Обработка обычных вопросов
+  if (selectedAnswers[index] === question.correctAnswer) {
+    feedback.textContent = `Вы ответили верно, правильный ответ: ${question.options[question.correctAnswer]}`;
+  } else {
+    feedback.textContent = `Вы ответили неправильно, правильный ответ: ${question.options[question.correctAnswer]}`;
+  }
 }
+
+// Добавляем элемент с обратной связью в DOM
+resultDiv.appendChild(feedback);
+resultsContainer.appendChild(resultDiv);
 
 let timerInterval;
 function startTimer(duration) {
