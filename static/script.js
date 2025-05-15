@@ -918,19 +918,22 @@ function displayQuestion() {
 
     
     if (question.type === "matching") {
-      const requiredPairs = question.correctAnswer.length;
-      const userPairs = permanentLines.length;
+  const requiredPairs = question.correctAnswer.length; // Необходимое количество пар
+  const userPairs = permanentLines.length; // Текущее количество соединений
 
-    if (userPairs < requiredPairs) {
-      alert("Соедините все изображения с определениями!");
-      return;
+  // Если пользователь не соединил все пары — не даем перейти дальше
+  if (userPairs < requiredPairs) {
+    alert("Соедините все изображения с определениями!");
+    return;
   }
 
+  // Собираем ответ пользователя
   const userAnswer = permanentLines.map(line => ({
     imageIndex: line.startDot.closest(".left-column") ? line.startIndex : line.endIndex,
     definitionIndex: line.startDot.closest(".right-column") ? line.startIndex : line.endIndex
   }));
 
+  // Сравниваем с правильным ответом
   const correctAnswer = question.correctAnswer.map((defIndex, imgIndex) => ({
     imageIndex: imgIndex,
     definitionIndex: defIndex
@@ -940,33 +943,22 @@ function displayQuestion() {
     JSON.stringify(userAnswer.sort()) ===
     JSON.stringify(correctAnswer.sort());
 
-  // 🔁 Вычитаем предыдущий результат, если он был
-  const prevAnswer = selectedAnswers[currentQuestion];
-  if (prevAnswer === "correct") {
-    score--; // Убираем старый правильный ответ
-  }
-
-  // Добавляем новый результат
+  // Увеличиваем счётчик правильных ответов, если ответ верный
   if (isCorrect) {
     score++;
   }
 
+  // ✅ Сохраняем результат в массив selectedAnswers
   selectedAnswers[currentQuestion] = isCorrect ? "correct" : "incorrect";
   answeredQuestions[currentQuestion] = true;
 
 } else {
+  // Обработка обычных вопросов
   if (selectedAnswer === null) {
     alert("Выберите ответ!");
     return;
   }
 
-  // 🔁 Вычитаем предыдущий результат, если он был
-  const prevAnswer = selectedAnswers[currentQuestion];
-  if (prevAnswer !== null && prevAnswer === question.correctAnswer) {
-    score--;
-  }
-
-  // Добавляем новый результат
   if (selectedAnswer === question.correctAnswer) {
     score++;
   }
@@ -974,6 +966,7 @@ function displayQuestion() {
   selectedAnswers[currentQuestion] = selectedAnswer;
   answeredQuestions[currentQuestion] = true;
 }
+
     
     currentQuestion++;
     selectedAnswer = null;
