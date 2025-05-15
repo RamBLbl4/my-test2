@@ -890,7 +890,7 @@ function displayQuestion() {
 
   nextButton.addEventListener("click", () => {
     if (question.type === "matching") {
-      // НОВАЯ ПРОВЕРКА ДЛЯ MATCHING
+      // ДОБАВЛЕНО: проверка для matching
       const requiredPairs = question.correctAnswer.length;
       const userPairs = permanentLines.length;
 
@@ -1030,7 +1030,7 @@ function showResults() {
       feedback.textContent = `Правильные соответствия: ${correctMapping}`;
 
       const finalFeedback = document.createElement("div");
-      // ОКОНЧАТЕЛЬНАЯ ПРОВЕРКА В РЕЗУЛЬТАТАХ
+      // ДОБАВЛЕНО: вывод результата для matching
       finalFeedback.textContent = selectedAnswers[index] === "correct"
         ? "Вы ответили верно."
         : "Вы ответили неправильно.";
