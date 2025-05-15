@@ -919,14 +919,10 @@ function displayQuestion() {
   nextButton.style.display = "inline-block";
 
   nextButton.addEventListener("click", () => {
-  const question = testQuestions[currentQuestion];
-
-  if (question.type !== "matching" && selectedAnswer === null) {
+  if (selectedAnswer === null && question.type !== "matching") {
     alert("Выберите ответ!");
     return;
   }
-
-  let isCorrect = false;
 
   if (question.type === "matching") {
     const requiredPairs = question.correctAnswer.length;
@@ -959,7 +955,7 @@ function displayQuestion() {
     const wasAlreadyCorrect = selectedAnswers[currentQuestion] === "correct";
 
     // Сравниваем без учета порядка
-    isCorrect = Object.keys(correctConnections).every(
+    const isCorrect = Object.keys(correctConnections).every(
       key => userConnections[key] === correctConnections[key]
     );
 
@@ -972,6 +968,12 @@ function displayQuestion() {
     answeredQuestions[currentQuestion] = true;
   } else {
     // Обработка обычных вопросов
+    if (selectedAnswer === null) {
+      alert("Выберите ответ!");
+      return;
+    }
+
+    // Проверяем, был ли уже засчитан балл за этот вопрос
     const wasAlreadyCorrect =
       typeof selectedAnswers[currentQuestion] === "number"
         ? selectedAnswers[currentQuestion] === question.correctAnswer
