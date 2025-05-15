@@ -575,7 +575,6 @@ const questions6 = [
 ];
 
 // Функция перемешивания
-// Функция перемешивания
 function getRandomQuestions(arr, count) {
   const shuffled = arr.slice();
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -624,34 +623,27 @@ document.addEventListener("mousemove", (e) => {
 
 document.addEventListener("mouseup", (e) => {
   if (!isDrawing || !startDot) return;
-  
   if (e.target.classList.contains("dot")) {
     const endDot = e.target;
-    
     // Проверяем, что точки из разных колонок
     const isLeftStart = startDot.closest(".left-column");
     const isRightEnd = endDot.closest(".right-column");
     const isRightStart = startDot.closest(".right-column");
     const isLeftEnd = endDot.closest(".left-column");
-    
+
     if ((isLeftStart && isRightEnd) || (isRightStart && isLeftEnd)) {
       // Удаляем старые соединения для этих точек
       removeConnectionsForDots(startDot, endDot);
-      
       // Создаем новое соединение
       createPermanentLine(startDot, endDot);
-      
-      // Проверяем ответ
-      checkMatchingAnswer();
     }
   }
-  
+
   // Удаляем временную линию
   if (currentLine) {
     currentLine.remove();
     currentLine = null;
   }
-  
   isDrawing = false;
   startDot = null;
 });
@@ -660,12 +652,16 @@ function removeConnectionsForDots(dot1, dot2) {
   // Удаляем все линии, связанные с этими точками
   const linesToRemove = [];
   permanentLines.forEach(line => {
-    if ((line.startDot === dot1 || line.endDot === dot1 || 
-         line.startDot === dot2 || line.endDot === dot2)) {
+    if (
+      line.startDot === dot1 ||
+      line.endDot === dot1 ||
+      line.startDot === dot2 ||
+      line.endDot === dot2
+    ) {
       linesToRemove.push(line);
     }
   });
-  
+
   linesToRemove.forEach(line => {
     if (line.element && line.element.parentNode) {
       line.element.parentNode.removeChild(line.element);
@@ -681,26 +677,32 @@ function createPermanentLine(startDot, endDot) {
   const line = document.createElement("div");
   line.classList.add("line");
   document.querySelector(".matching-container").appendChild(line);
-  
+
   const rectStart = startDot.getBoundingClientRect();
   const rectEnd = endDot.getBoundingClientRect();
-  const containerRect = document.querySelector(".matching-container").getBoundingClientRect();
-  
-  const startX = rectStart.left + rectStart.width / 2 - containerRect.left;
-  const startY = rectStart.top + rectStart.height / 2 - containerRect.top;
-  const endX = rectEnd.left + rectEnd.width / 2 - containerRect.left;
-  const endY = rectEnd.top + rectEnd.height / 2 - containerRect.top;
-  
+  const containerRect = document
+    .querySelector(".matching-container")
+    .getBoundingClientRect();
+
+  const startX =
+    rectStart.left + rectStart.width / 2 - containerRect.left;
+  const startY =
+    rectStart.top + rectStart.height / 2 - containerRect.top;
+  const endX =
+    rectEnd.left + rectEnd.width / 2 - containerRect.left;
+  const endY =
+    rectEnd.top + rectEnd.height / 2 - containerRect.top;
+
   const dx = endX - startX;
   const dy = endY - startY;
   const length = Math.sqrt(dx * dx + dy * dy);
   const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
-  
+
   line.style.width = `${length}px`;
   line.style.left = `${startX}px`;
   line.style.top = `${startY}px`;
   line.style.transform = `rotate(${angle}deg)`;
-  
+
   // Сохраняем информацию о линии
   permanentLines.push({
     element: line,
@@ -713,20 +715,24 @@ function createPermanentLine(startDot, endDot) {
 
 function updateLinePosition(e) {
   if (!startDot || !currentLine) return;
-  
+
   const rectStart = startDot.getBoundingClientRect();
-  const containerRect = document.querySelector(".matching-container").getBoundingClientRect();
-  
-  const startX = rectStart.left + rectStart.width / 2 - containerRect.left;
-  const startY = rectStart.top + rectStart.height / 2 - containerRect.top;
+  const containerRect = document
+    .querySelector(".matching-container")
+    .getBoundingClientRect();
+
+  const startX =
+    rectStart.left + rectStart.width / 2 - containerRect.left;
+  const startY =
+    rectStart.top + rectStart.height / 2 - containerRect.top;
   const endX = e.clientX - containerRect.left;
   const endY = e.clientY - containerRect.top;
-  
+
   const dx = endX - startX;
   const dy = endY - startY;
   const length = Math.sqrt(dx * dx + dy * dy);
   const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
-  
+
   currentLine.style.width = `${length}px`;
   currentLine.style.left = `${startX}px`;
   currentLine.style.top = `${startY}px`;
@@ -736,13 +742,17 @@ function updateLinePosition(e) {
 function checkMatchingAnswer() {
   const question = testQuestions[currentQuestion];
   if (question.type !== "matching") return;
-  
+
   // Собираем текущие соединения
   const currentConnections = permanentLines.map(line => ({
-    imageIndex: line.startDot.closest(".left-column") ? line.startIndex : line.endIndex,
-    definitionIndex: line.startDot.closest(".right-column") ? line.startIndex : line.endIndex
+    imageIndex: line.startDot.closest(".left-column")
+      ? line.startIndex
+      : line.endIndex,
+    definitionIndex: line.startDot.closest(".right-column")
+      ? line.startIndex
+      : line.endIndex
   }));
-  
+
   // Проверяем правильность ответа (это можно использовать при нажатии "Далее")
   // Здесь можно добавить логику проверки, если нужно
 }
@@ -750,7 +760,6 @@ function checkMatchingAnswer() {
 startButton.addEventListener("click", () => {
   fullName = document.getElementById("full-name").value;
   groupNumber = document.getElementById("group-number").value;
-
   if (fullName && groupNumber) {
     document.getElementById("instructions").style.display = 'none';
     startContainer.style.display = 'none';
@@ -791,7 +800,6 @@ function displayQuestion() {
   if (question.images && question.type !== "matching") {
     const imagesRow = document.createElement("div");
     imagesRow.classList.add("images-row");
-
     question.images.forEach((url, index) => {
       const multiImg = document.createElement("img");
       multiImg.src = url;
@@ -815,7 +823,6 @@ function displayQuestion() {
       // Добавляем обертку в строку изображений
       imagesRow.appendChild(imageWrapper);
     });
-
     questionElement.appendChild(imagesRow);
   }
 
@@ -835,11 +842,9 @@ function displayQuestion() {
     // Левая часть: изображения
     const leftColumn = document.createElement("div");
     leftColumn.classList.add("matching-column", "left-column");
-
     question.images.forEach((url, index) => {
       const imageWrapper = document.createElement("div");
       imageWrapper.classList.add("image-wrapper");
-
       const img = document.createElement("img");
       img.src = url;
       img.alt = "Изображение";
@@ -858,7 +863,6 @@ function displayQuestion() {
     // Правая часть: определения
     const rightColumn = document.createElement("div");
     rightColumn.classList.add("matching-column", "right-column");
-
     question.definitions.forEach((definition, index) => {
       const definitionWrapper = document.createElement("div");
       definitionWrapper.classList.add("definition-wrapper");
@@ -890,7 +894,9 @@ function displayQuestion() {
       optionElement.textContent = option;
 
       optionElement.addEventListener("click", () => {
-        document.querySelectorAll(".answer-option").forEach(el => el.classList.remove("selected"));
+        document.querySelectorAll(".answer-option").forEach(el =>
+          el.classList.remove("selected")
+        );
         optionElement.classList.add("selected");
         selectedAnswer = index;
         selectedAnswers[currentQuestion] = index;
@@ -900,14 +906,16 @@ function displayQuestion() {
 
       answersWrapper.appendChild(optionElement);
     });
-
     questionElement.appendChild(answersWrapper);
   }
 
   questionsContainer.appendChild(questionElement);
 
   const nextButton = document.createElement("button");
-  nextButton.textContent = currentQuestion === testQuestions.length - 1 ? "Завершить тест" : "Далее";
+  nextButton.textContent = currentQuestion === testQuestions.length - 1
+    ? "Завершить тест"
+    : "Далее";
+
   nextButton.style.display = "inline-block";
 
   nextButton.addEventListener("click", () => {
@@ -916,62 +924,59 @@ function displayQuestion() {
       return;
     }
 
-    
     if (question.type === "matching") {
-  const requiredPairs = question.correctAnswer.length; // Необходимое количество пар
-  const userPairs = permanentLines.length; // Текущее количество соединений
+      const requiredPairs = question.correctAnswer.length;
+      const userPairs = permanentLines.length;
 
-  // Если пользователь не соединил все пары — не даем перейти дальше
-  if (userPairs < requiredPairs) {
-    alert("Соедините все изображения с определениями!");
-    return;
-  }
+      if (userPairs < requiredPairs) {
+        alert("Соедините все изображения с определениями!");
+        return;
+      }
 
-  // Собираем ответ пользователя
-  const userAnswer = permanentLines.map(line => ({
-    imageIndex: line.startDot.closest(".left-column")
-      ? line.startIndex
-      : line.endIndex,
-    definitionIndex: line.startDot.closest(".right-column")
-      ? line.startIndex
-      : line.endIndex,
-  }));
+      // Собираем текущие соединения пользователя
+      const userConnections = {};
+      permanentLines.forEach(line => {
+        const imageIndex = line.startDot.closest(".left-column")
+          ? line.startIndex
+          : line.endIndex;
+        const definitionIndex = line.startDot.closest(".right-column")
+          ? line.startIndex
+          : line.endIndex;
+        userConnections[imageIndex] = definitionIndex;
+      });
 
-  // Сравниваем с правильным ответом
-  const correctAnswer = question.correctAnswer.map((defIndex, imgIndex) => ({
-    imageIndex: imgIndex,
-    definitionIndex: defIndex,
-  }));
+      // Формируем правильные ответы
+      const correctConnections = {};
+      question.correctAnswer.forEach((defIndex, imgIndex) => {
+        correctConnections[imgIndex] = defIndex;
+      });
 
-  const isCorrect =
-    JSON.stringify(userAnswer.sort()) ===
-    JSON.stringify(correctAnswer.sort());
+      // Сравниваем без учета порядка
+      const isCorrect = Object.keys(correctConnections).every(
+        key => userConnections[key] === correctConnections[key]
+      );
 
-  // Увеличиваем счётчик правильных ответов, если ответ верный
-  if (isCorrect) {
-    score++;
-  }
+      if (isCorrect) {
+        score++;
+      }
 
-  // ✅ Сохраняем результат в массив selectedAnswers
-  selectedAnswers[currentQuestion] = isCorrect ? "correct" : "incorrect";
-  answeredQuestions[currentQuestion] = true;
+      selectedAnswers[currentQuestion] = isCorrect ? "correct" : "incorrect";
+      answeredQuestions[currentQuestion] = true;
+    } else {
+      // Обработка обычных вопросов
+      if (selectedAnswer === null) {
+        alert("Выберите ответ!");
+        return;
+      }
 
-} else {
-  // Обработка обычных вопросов
-  if (selectedAnswer === null) {
-    alert("Выберите ответ!");
-    return;
-  }
+      if (selectedAnswer === question.correctAnswer) {
+        score++;
+      }
 
-  if (selectedAnswer === question.correctAnswer) {
-    score++;
-  }
+      selectedAnswers[currentQuestion] = selectedAnswer;
+      answeredQuestions[currentQuestion] = true;
+    }
 
-  selectedAnswers[currentQuestion] = selectedAnswer;
-  answeredQuestions[currentQuestion] = true;
-}
-
-    
     currentQuestion++;
     selectedAnswer = null;
 
