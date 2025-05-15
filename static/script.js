@@ -356,7 +356,7 @@ const questions2 = [
 
   {
     text: "Какой метод уменьшения шума используется на этом фото?",
-    imageUrl: "static/metod.png",  
+    imageUrl: "/static/metod.png",  
     options: [
       "Метод скользящего среднего",
       "Фильтр Гаусса",
@@ -369,7 +369,7 @@ const questions2 = [
 
    {
     text: "Какой метод уменьшения шума используется на этом фото?",
-    imageUrl: "static/metod2.png",  
+    imageUrl: "/static/metod2.png",  
     options: [
       "Метод скользящего среднего",
       "Фильтр Гаусса",
@@ -383,9 +383,9 @@ const questions2 = [
   {
   text: "Какое изображение лучше всего подходит для сжатия?",
   images: [
-    "static/lenna.bmp",  // Путь к первому изображению
-    "static/baboon.bmp", // Путь ко второму изображению
-    "static/pepper.bmp"  // Путь к третьему изображению
+    "/static/lenna.bmp",  // Путь к первому изображению
+    "/static/baboon.bmp", // Путь ко второму изображению
+    "/static/pepper.bmp"  // Путь к третьему изображению
   ],
   options: [
     "Lenna",   // Вариант 1
@@ -399,8 +399,8 @@ const questions2 = [
     type: "matching",
     text: "Соотнесите изображения с методами, которые к ним применены.",
     images: [
-      "static/lenna_denoised_mean.png",
-      "static/lenna_denoised_mean222.png"
+      "/static/lenna_denoised_mean.png",
+      "/static/lenna_denoised_mean222.png"
     ],
     definitions: [
       "Скользящего среднего",
@@ -419,8 +419,8 @@ const questions3 = [
     type: "matching",
     text: "Соотнесите изображения с моделями шума, которые к ним применены",
     images: [
-      "static/SaltPepperGraySamolet.png",
-      "static/GaussGraySamolet.png"
+      "/static/SaltPepperGraySamolet.png",
+      "/static/GaussGraySamolet.png"
     ],
     definitions: [
       "Аддитивный",
@@ -434,8 +434,8 @@ const questions3 = [
     type: "matching",
     text: "Соотнесите изображения с моделями шума, которые к ним применены",
     images: [
-      "static/impulse_noise.png",
-      "static/gaussian_noise.png"
+      "/static/impulse_noise.png",
+      "/static/gaussian_noise.png"
     ],
     definitions: [
       "Аддитивный",
@@ -449,8 +449,8 @@ const questions3 = [
     type: "matching",
     text: "Соотнесите изображения с моделями шума, которые к ним применены",
     images: [
-      "static/noise_image_1.png",
-      "static/noise_image_2.png"
+      "/static/noise_image_1.png",
+      "/static/noise_image_2.png"
     ],
     definitions: [
       "Аддитивный",
@@ -467,9 +467,9 @@ const questions4 = [
     
   text: "Ниже представлены три изображения после применения трех методов интерполяции. Какой метод интерполяции применен ко второму изображению?",
   images: [
-    "static/interpolation_bilinear_ZOOMMAP.png",  // Путь к первому изображению
-    "static/interpolation_nearest_ZOOMMAP.png", // Путь ко второму изображению
-    "static/interpolation_bicubic_ZOOMMAP.png"  // Путь к третьему изображению
+    "/static/interpolation_bilinear_ZOOMMAP.png",  // Путь к первому изображению
+    "/static/interpolation_nearest_ZOOMMAP.png", // Путь ко второму изображению
+    "/static/interpolation_bicubic_ZOOMMAP.png"  // Путь к третьему изображению
   ],
   options: [
     "Интерполяция по ближайшему соседу",
@@ -484,9 +484,9 @@ const questions4 = [
     type: "matching",
     text: "Соотнесите изображения с методами интерполяции, которые к ним применены",
     images: [
-      "static/interpolation_bilinear_ZOOMTEXT1.png",  // Путь к первому изображению
-      "static/interpolation_nearest_ZOOMTEXT1.png", // Путь ко второму изображению
-      "static/interpolation_bicubic_ZOOMTEXT1.png"  // Путь к третьему изображению
+      "/static/interpolation_bilinear_ZOOMTEXT1.png",  // Путь к первому изображению
+      "/static/interpolation_nearest_ZOOMTEXT1.png", // Путь ко второму изображению
+      "/static/interpolation_bicubic_ZOOMTEXT1.png"  // Путь к третьему изображению
     ],
     definitions: [
       "Интерполяция по ближайшему соседу",
@@ -506,9 +506,9 @@ const questions5 = [
     type: "matching",
     text: "Соотнесите изображения, к которым применено квантование, с параметром R",
     images: [
-      "static/dct_quant_idct_result_ZOOMLENNA30.png",  // Путь к первому изображению
-      "static/dct_quant_idct_result_ZOOMLENNA5.png",
-      "static/lenna.jpg" // Путь ко второму изображению
+      "/static/dct_quant_idct_result_ZOOMLENNA30.png",  // Путь к первому изображению
+      "/static/dct_quant_idct_result_ZOOMLENNA5.png",
+      "/static/lenna.jpg" // Путь ко второму изображению
        
     ],
     definitions: [
@@ -528,8 +528,8 @@ const questions6 = [
     type: "matching",
     text: "Соотнесите изображения с методами фильтрации шума, которые к ним применены",
     images: [
-      "static/metodsrednegoRGB.png",  // Путь к первому изображению
-      "static/median_filter_3x3RGB.png"  // Путь к третьему изображению
+      "/static/metodsrednegoRGB.png",  // Путь к первому изображению
+      "/static/median_filter_3x3RGB.png"  // Путь к третьему изображению
     ],
     definitions: [
       "Медианный фильтр",
@@ -543,8 +543,8 @@ const questions6 = [
     type: "matching",
     text: "Соотнесите изображения с методами фильтрации шума, которые к ним применены",
     images: [
-      "static/median_filter_3x3RGB.png",  // Путь к первому изображению
-      "static/filtrGAussaRGB.png"  // Путь к третьему изображению
+      "/static/median_filter_3x3RGB.png",  // Путь к первому изображению
+      "/static/filtrGAussaRGB.png"  // Путь к третьему изображению
     ],
     definitions: [
       "Медианный фильтр",
@@ -558,9 +558,9 @@ const questions6 = [
     type: "matching",
     text: "Соотнесите изображения, полученные после применения метода скользящего среднего, с апертурой",
     images: [
-      "static/metodsrednegoRGB.png",  // Путь к первому изображению
-      "static/metodsrednegoAper35.png",
-      "static/metodsrednegoAper15.png"  // Путь к третьему изображению
+      "/static/metodsrednegoRGB.png",  // Путь к первому изображению
+      "/static/metodsrednegoAper35.png",
+      "/static/metodsrednegoAper15.png"  // Путь к третьему изображению
     ],
     definitions: [
       "7",
@@ -575,7 +575,6 @@ const questions6 = [
 ];
 
 // Функция перемешивания
-// Функция перемешивания
 function getRandomQuestions(arr, count) {
   const shuffled = arr.slice();
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -584,19 +583,22 @@ function getRandomQuestions(arr, count) {
   }
   return shuffled.slice(0, count);
 }
+
 const testQuestions = [
   ...getRandomQuestions(questions1, 0),
   ...getRandomQuestions(questions2, 5),
   ...getRandomQuestions(questions3, 3),
   ...getRandomQuestions(questions4, 2),
   ...getRandomQuestions(questions5, 1),
-  ...getRandomQuestions(questions6, 3),
+  ...getRandomQuestions(questions6, 3)
 ];
+
 let currentQuestion = 0;
 let score = 0;
 let selectedAnswer = null;
 const answeredQuestions = new Array(testQuestions.length).fill(false);
 const selectedAnswers = new Array(testQuestions.length).fill(null);
+
 // Переменные для управления линиями
 let currentLine = null;
 let startDot = null;
@@ -621,25 +623,34 @@ document.addEventListener("mousemove", (e) => {
 
 document.addEventListener("mouseup", (e) => {
   if (!isDrawing || !startDot) return;
+  
   if (e.target.classList.contains("dot")) {
     const endDot = e.target;
+    
     // Проверяем, что точки из разных колонок
     const isLeftStart = startDot.closest(".left-column");
     const isRightEnd = endDot.closest(".right-column");
     const isRightStart = startDot.closest(".right-column");
     const isLeftEnd = endDot.closest(".left-column");
+    
     if ((isLeftStart && isRightEnd) || (isRightStart && isLeftEnd)) {
       // Удаляем старые соединения для этих точек
       removeConnectionsForDots(startDot, endDot);
+      
       // Создаем новое соединение
       createPermanentLine(startDot, endDot);
+      
+      // Проверяем ответ
+      checkMatchingAnswer();
     }
   }
+  
   // Удаляем временную линию
   if (currentLine) {
     currentLine.remove();
     currentLine = null;
   }
+  
   isDrawing = false;
   startDot = null;
 });
@@ -648,15 +659,12 @@ function removeConnectionsForDots(dot1, dot2) {
   // Удаляем все линии, связанные с этими точками
   const linesToRemove = [];
   permanentLines.forEach(line => {
-    if (
-      line.startDot === dot1 ||
-      line.endDot === dot1 ||
-      line.startDot === dot2 ||
-      line.endDot === dot2
-    ) {
+    if ((line.startDot === dot1 || line.endDot === dot1 || 
+         line.startDot === dot2 || line.endDot === dot2)) {
       linesToRemove.push(line);
     }
   });
+  
   linesToRemove.forEach(line => {
     if (line.element && line.element.parentNode) {
       line.element.parentNode.removeChild(line.element);
@@ -672,51 +680,52 @@ function createPermanentLine(startDot, endDot) {
   const line = document.createElement("div");
   line.classList.add("line");
   document.querySelector(".matching-container").appendChild(line);
+  
   const rectStart = startDot.getBoundingClientRect();
   const rectEnd = endDot.getBoundingClientRect();
-  const containerRect = document
-    .querySelector(".matching-container")
-    .getBoundingClientRect();
-  const startX =
-    rectStart.left + rectStart.width / 2 - containerRect.left;
-  const startY =
-    rectStart.top + rectStart.height / 2 - containerRect.top;
+  const containerRect = document.querySelector(".matching-container").getBoundingClientRect();
+  
+  const startX = rectStart.left + rectStart.width / 2 - containerRect.left;
+  const startY = rectStart.top + rectStart.height / 2 - containerRect.top;
   const endX = rectEnd.left + rectEnd.width / 2 - containerRect.left;
   const endY = rectEnd.top + rectEnd.height / 2 - containerRect.top;
+  
   const dx = endX - startX;
-  const dy = startY - endY;
+  const dy = endY - startY;
   const length = Math.sqrt(dx * dx + dy * dy);
   const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
+  
   line.style.width = `${length}px`;
   line.style.left = `${startX}px`;
   line.style.top = `${startY}px`;
   line.style.transform = `rotate(${angle}deg)`;
+  
   // Сохраняем информацию о линии
   permanentLines.push({
     element: line,
     startDot: startDot,
     endDot: endDot,
     startIndex: parseInt(startDot.dataset.index),
-    endIndex: parseInt(endDot.dataset.index),
+    endIndex: parseInt(endDot.dataset.index)
   });
 }
 
 function updateLinePosition(e) {
   if (!startDot || !currentLine) return;
+  
   const rectStart = startDot.getBoundingClientRect();
-  const containerRect = document
-    .querySelector(".matching-container")
-    .getBoundingClientRect();
-  const startX =
-    rectStart.left + rectStart.width / 2 - containerRect.left;
-  const startY =
-    rectStart.top + rectStart.height / 2 - containerRect.top;
+  const containerRect = document.querySelector(".matching-container").getBoundingClientRect();
+  
+  const startX = rectStart.left + rectStart.width / 2 - containerRect.left;
+  const startY = rectStart.top + rectStart.height / 2 - containerRect.top;
   const endX = e.clientX - containerRect.left;
   const endY = e.clientY - containerRect.top;
+  
   const dx = endX - startX;
   const dy = endY - startY;
   const length = Math.sqrt(dx * dx + dy * dy);
   const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
+  
   currentLine.style.width = `${length}px`;
   currentLine.style.left = `${startX}px`;
   currentLine.style.top = `${startY}px`;
@@ -726,31 +735,25 @@ function updateLinePosition(e) {
 function checkMatchingAnswer() {
   const question = testQuestions[currentQuestion];
   if (question.type !== "matching") return;
+  
   // Собираем текущие соединения
-  const currentConnections = permanentLines.map((line) => ({
-    imageIndex: line.startDot.closest(".left-column")
-      ? line.startIndex
-      : line.endIndex,
-    definitionIndex: line.startDot.closest(".right-column")
-      ? line.startIndex
-      : line.endIndex,
+  const currentConnections = permanentLines.map(line => ({
+    imageIndex: line.startDot.closest(".left-column") ? line.startIndex : line.endIndex,
+    definitionIndex: line.startDot.closest(".right-column") ? line.startIndex : line.endIndex
   }));
+  
   // Проверяем правильность ответа (это можно использовать при нажатии "Далее")
   // Здесь можно добавить логику проверки, если нужно
 }
 
-const startButton = document.getElementById("start-button"); // Предположим, так называется кнопка запуска
-let fullName = "";
-let groupNumber = "";
-let timerInterval;
-
 startButton.addEventListener("click", () => {
   fullName = document.getElementById("full-name").value;
   groupNumber = document.getElementById("group-number").value;
+
   if (fullName && groupNumber) {
-    document.getElementById("instructions").style.display = "none";
-    startContainer.style.display = "none";
-    questionsContainer.style.display = "block";
+    document.getElementById("instructions").style.display = 'none';
+    startContainer.style.display = 'none';
+    questionsContainer.style.display = 'block';
     timerInterval = startTimer(45 * 60);
     displayQuestion();
   } else {
@@ -760,16 +763,19 @@ startButton.addEventListener("click", () => {
 
 function displayQuestion() {
   const question = testQuestions[currentQuestion];
-  questionsContainer.innerHTML = "";
+  questionsContainer.innerHTML = '';
   updateQuestionNumbers();
+
   const questionElement = document.createElement("div");
   questionElement.classList.add("question");
 
+  // Заголовок вопроса
   const questionText = document.createElement("h2");
   questionText.classList.add("question-text");
   questionText.textContent = question.text;
   questionElement.appendChild(questionText);
 
+  // Если у вопроса одно изображение (imageUrl), покажем его
   if (question.imageUrl) {
     const singleImg = document.createElement("img");
     singleImg.src = question.imageUrl;
@@ -780,9 +786,11 @@ function displayQuestion() {
     questionElement.appendChild(singleImg);
   }
 
+  // Если у вопроса массив изображений (images), выведем их в один горизонтальный ряд
   if (question.images && question.type !== "matching") {
     const imagesRow = document.createElement("div");
     imagesRow.classList.add("images-row");
+
     question.images.forEach((url, index) => {
       const multiImg = document.createElement("img");
       multiImg.src = url;
@@ -790,22 +798,30 @@ function displayQuestion() {
       multiImg.style.width = "450px";
       multiImg.style.height = "350px";
 
+      // Создаем контейнер для изображения и номера
       const imageWrapper = document.createElement("div");
       imageWrapper.classList.add("image-wrapper");
 
+      // Создаем элемент с номером изображения
       const imageNumber = document.createElement("span");
       imageNumber.classList.add("image-number");
       imageNumber.textContent = index + 1;
 
+      // Добавляем изображение и номер в обертку
       imageWrapper.appendChild(multiImg);
       imageWrapper.appendChild(imageNumber);
+
+      // Добавляем обертку в строку изображений
       imagesRow.appendChild(imageWrapper);
     });
+
     questionElement.appendChild(imagesRow);
   }
 
+  // Обработка нового типа вопроса с соответствием
   if (question.type === "matching") {
-    permanentLines.forEach((line) => {
+    // Очищаем предыдущие линии
+    permanentLines.forEach(line => {
       if (line.element && line.element.parentNode) {
         line.element.parentNode.removeChild(line.element);
       }
@@ -815,8 +831,10 @@ function displayQuestion() {
     const matchingContainer = document.createElement("div");
     matchingContainer.classList.add("matching-container");
 
+    // Левая часть: изображения
     const leftColumn = document.createElement("div");
     leftColumn.classList.add("matching-column", "left-column");
+
     question.images.forEach((url, index) => {
       const imageWrapper = document.createElement("div");
       imageWrapper.classList.add("image-wrapper");
@@ -836,8 +854,10 @@ function displayQuestion() {
       leftColumn.appendChild(imageWrapper);
     });
 
+    // Правая часть: определения
     const rightColumn = document.createElement("div");
     rightColumn.classList.add("matching-column", "right-column");
+
     question.definitions.forEach((definition, index) => {
       const definitionWrapper = document.createElement("div");
       definitionWrapper.classList.add("definition-wrapper");
@@ -867,74 +887,55 @@ function displayQuestion() {
       const optionElement = document.createElement("div");
       optionElement.classList.add("answer-option");
       optionElement.textContent = option;
+
       optionElement.addEventListener("click", () => {
-        document
-          .querySelectorAll(".answer-option")
-          .forEach((el) => el.classList.remove("selected"));
+        document.querySelectorAll(".answer-option").forEach(el => el.classList.remove("selected"));
         optionElement.classList.add("selected");
         selectedAnswer = index;
         selectedAnswers[currentQuestion] = index;
         answeredQuestions[currentQuestion] = true;
         updateQuestionNumbers();
       });
+
       answersWrapper.appendChild(optionElement);
     });
+
     questionElement.appendChild(answersWrapper);
   }
 
+  questionsContainer.appendChild(questionElement);
+
   const nextButton = document.createElement("button");
-  nextButton.textContent = currentQuestion === testQuestions.length - 1
-    ? "Завершить тест"
-    : "Далее";
+  nextButton.textContent = currentQuestion === testQuestions.length - 1 ? "Завершить тест" : "Далее";
   nextButton.style.display = "inline-block";
 
   nextButton.addEventListener("click", () => {
+    if (selectedAnswer === null && question.type !== "matching") {
+      alert("Выберите ответ!");
+      return;
+    }
+
     if (question.type === "matching") {
-      // ДОБАВЛЕНО: проверка для matching
-      const requiredPairs = question.correctAnswer.length;
-      const userPairs = permanentLines.length;
-
-      if (userPairs < requiredPairs) {
-        alert("Соедините все изображения с определениями!");
-        return;
-      }
-
-      const userAnswer = permanentLines.map((line) => ({
-        imageIndex: line.startDot.closest(".left-column")
-          ? line.startIndex
-          : line.endIndex,
-        definitionIndex: line.startDot.closest(".right-column")
-          ? line.startIndex
-          : line.endIndex,
+      // Проверяем ответ для вопроса на соответствие
+      const userAnswer = permanentLines.map(line => ({
+        imageIndex: line.startDot.closest(".left-column") ? line.startIndex : line.endIndex,
+        definitionIndex: line.startDot.closest(".right-column") ? line.startIndex : line.endIndex
       }));
-
-      const correctAnswer = question.correctAnswer.map((defIndex, imgIndex) => ({
+      
+      // Сортируем и сравниваем с правильным ответом
+      const isCorrect = JSON.stringify(userAnswer.sort()) === JSON.stringify(question.correctAnswer.map((defIndex, imgIndex) => ({
         imageIndex: imgIndex,
-        definitionIndex: defIndex,
-      }));
-
-      const isCorrect =
-        JSON.stringify(userAnswer.sort()) ===
-        JSON.stringify(correctAnswer.sort());
-
+        definitionIndex: defIndex
+      })).sort());
+      
       if (isCorrect) {
         score++;
       }
-
-      selectedAnswers[currentQuestion] = isCorrect ? "correct" : "incorrect";
       answeredQuestions[currentQuestion] = true;
     } else {
-      if (selectedAnswer === null) {
-        alert("Выберите ответ!");
-        return;
-      }
-
       if (selectedAnswer === question.correctAnswer) {
         score++;
       }
-
-      selectedAnswers[currentQuestion] = selectedAnswer;
-      answeredQuestions[currentQuestion] = true;
     }
 
     currentQuestion++;
@@ -947,9 +948,7 @@ function displayQuestion() {
         clearInterval(timerInterval);
         showResults();
       } else {
-        alert(
-          "Вы ответили не на все вопросы. Пожалуйста, ответьте на все вопросы перед завершением теста."
-        );
+        alert("Вы ответили не на все вопросы. Пожалуйста, ответьте на все вопросы перед завершением теста.");
         currentQuestion = testQuestions.length - 1;
         displayQuestion();
       }
@@ -957,14 +956,14 @@ function displayQuestion() {
   });
 
   questionElement.appendChild(nextButton);
-  questionsContainer.appendChild(questionElement);
 }
 
 function updateQuestionNumbers() {
   const questionNumbersContainer = document.getElementById("question-numbers");
-  questionNumbersContainer.innerHTML = "";
+  questionNumbersContainer.innerHTML = '';
 
   const groups = Math.ceil(testQuestions.length / 10);
+
   for (let group = 0; group < groups; group++) {
     const groupContainer = document.createElement("div");
     groupContainer.classList.add("question-group");
@@ -998,8 +997,8 @@ function updateQuestionNumbers() {
 }
 
 function showResults() {
-  startContainer.style.display = "none";
-  questionsContainer.style.display = "none";
+  startContainer.style.display = 'none';
+  questionsContainer.style.display = 'none';
 
   resultsContainer.innerHTML = `
     <div id="results-container">
@@ -1012,58 +1011,71 @@ function showResults() {
   `;
 
   testQuestions.forEach((question, index) => {
-    const resultDiv = document.createElement("div");
-    resultDiv.classList.add("question-result");
+    const resultDiv = document.createElement('div');
+    resultDiv.classList.add('question-result');
 
-    const questionText = document.createElement("h3");
+    const questionText = document.createElement('h3');
     questionText.textContent = `Вопрос ${index + 1}: ${question.text}`;
     resultDiv.appendChild(questionText);
 
-    const feedback = document.createElement("div");
-    feedback.classList.add("answer-feedback");
+    const optionsList = document.createElement('ul');
+    question.options?.forEach((option, optIndex) => {
+      const optionItem = document.createElement('li');
+      optionItem.textContent = `${optIndex + 1}. ${option}`;
+      optionsList.appendChild(optionItem);
+    });
+    resultDiv.appendChild(optionsList);
+
+    const feedback = document.createElement('div');
+    feedback.classList.add('answer-feedback');
 
     if (question.type === "matching") {
+      // Правильные соответствия
       const correctMapping = question.correctAnswer.map((defIndex, imgIndex) =>
         `Изображение ${imgIndex + 1} → Определение ${defIndex + 1}`
       ).join(", ");
 
       feedback.textContent = `Правильные соответствия: ${correctMapping}`;
 
+      // Добавляем текст о результате: "Вы ответили верно" или "Вы ответили неправильно"
       const finalFeedback = document.createElement("div");
-      // ДОБАВЛЕНО: вывод результата для matching
+      finalFeedback.classList.add("matching-result");
       finalFeedback.textContent = selectedAnswers[index] === "correct"
         ? "Вы ответили верно."
         : "Вы ответили неправильно.";
       resultDiv.appendChild(finalFeedback);
+    } else if (selectedAnswers[index] === question.correctAnswer) {
+      feedback.textContent = `Вы ответили верно, правильный ответ: ${question.options[question.correctAnswer]}`;
     } else {
-      const answerState = selectedAnswers[index] === question.correctAnswer;
-      feedback.textContent = answerState
-        ? `Вы ответили верно, правильный ответ: ${question.options[question.correctAnswer]}`
-        : `Вы ответили неправильно, правильный ответ: ${question.options[question.correctAnswer]}`;
+      feedback.textContent = `Вы ответили неправильно, правильный ответ: ${question.options[question.correctAnswer]}`;
     }
 
     resultDiv.appendChild(feedback);
     resultsContainer.appendChild(resultDiv);
   });
 
-  resultsContainer.style.display = "block";
+  resultsContainer.style.display = 'block';
 }
 
+let timerInterval;
 function startTimer(duration) {
-  let timer = duration,
-    minutes,
-    seconds;
-  const timerElement = document.getElementById("timer");
-  const timerInterval = setInterval(() => {
+  let timer = duration, minutes, seconds;
+  const timerElement = document.getElementById('timer');
+
+  timerInterval = setInterval(() => {
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
+
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
+
     timerElement.textContent = minutes + ":" + seconds;
+
     if (--timer < 0) {
       clearInterval(timerInterval);
       showResults();
     }
   }, 1000);
+
   return timerInterval;
 }
