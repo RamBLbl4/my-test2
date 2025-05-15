@@ -919,64 +919,64 @@ function displayQuestion() {
   nextButton.style.display = "inline-block";
 
   nextButton.addEventListener("click", () => {
-  if (selectedAnswer === null && question.type !== "matching") {
+  const question = testQuestions[currentQuestion];
+
+  if (question.type !== "matching" && selectedAnswer === null) {
     alert("Выберите ответ!");
     return;
   }
 
-  if (question.type === "matching") {
-    const requiredPairs = question.correctAnswer.length; // Необходимое количество пар
-    const userPairs = permanentLines.length; // Текущее количество соединений
+  let isCorrect = false;
 
-    // Если пользователь не соединил все пары — не даем перейти дальше
+  if (question.type === "matching") {
+    const requiredPairs = question.correctAnswer.length;
+    const userPairs = permanentLines.length;
+
     if (userPairs < requiredPairs) {
       alert("Соедините все изображения с определениями!");
       return;
     }
 
-    // Собираем ответ пользователя
-    const userAnswer = permanentLines.map(line => ({
-      imageIndex: line.startDot.closest(".left-column")
+    // Собираем текущие соединения пользователя
+    const userConnections = {};
+    permanentLines.forEach(line => {
+      const imageIndex = line.startDot.closest(".left-column")
         ? line.startIndex
-        : line.endIndex,
-      definitionIndex: line.startDot.closest(".right-column")
+        : line.endIndex;
+      const definitionIndex = line.startDot.closest(".right-column")
         ? line.startIndex
-        : line.endIndex,
-    }));
+        : line.endIndex;
+      userConnections[imageIndex] = definitionIndex;
+    });
 
     // Формируем правильные ответы
-    const correctAnswer = question.correctAnswer.map((defIndex, imgIndex) => ({
-      imageIndex: imgIndex,
-      definitionIndex: defIndex,
-    }));
+    const correctConnections = {};
+    question.correctAnswer.forEach((defIndex, imgIndex) => {
+      correctConnections[imgIndex] = defIndex;
+    });
 
     // Проверяем, был ли уже засчитан балл за этот вопрос
     const wasAlreadyCorrect = selectedAnswers[currentQuestion] === "correct";
 
     // Сравниваем без учета порядка
-    const isCorrect =
-      JSON.stringify(userAnswer.sort()) ===
-      JSON.stringify(correctAnswer.sort());
+    isCorrect = Object.keys(correctConnections).every(
+      key => userConnections[key] === correctConnections[key]
+    );
 
     // Увеличиваем счётчик ТОЛЬКО если это новый правильный ответ
     if (isCorrect && !wasAlreadyCorrect) {
       score++;
     }
 
-    // Сохраняем результат в массив selectedAnswers
     selectedAnswers[currentQuestion] = isCorrect ? "correct" : "incorrect";
     answeredQuestions[currentQuestion] = true;
   } else {
     // Обработка обычных вопросов
-    if (selectedAnswer === null) {
-      alert("Выберите ответ!");
-      return;
-    }
+    const wasAlreadyCorrect =
+      typeof selectedAnswers[currentQuestion] === "number"
+        ? selectedAnswers[currentQuestion] === question.correctAnswer
+        : false;
 
-    // Проверяем, был ли уже засчитан балл за этот вопрос
-    const wasAlreadyCorrect = selectedAnswers[currentQuestion] === question.correctAnswer;
-
-    // Увеличиваем счётчик ТОЛЬКО если это новый правильный ответ
     if (selectedAnswer === question.correctAnswer && !wasAlreadyCorrect) {
       score++;
     }
