@@ -915,29 +915,57 @@ function displayQuestion() {
       return;
     }
 
+    
     if (question.type === "matching") {
-      // Проверяем ответ для вопроса на соответствие
-      const userAnswer = permanentLines.map(line => ({
-        imageIndex: line.startDot.closest(".left-column") ? line.startIndex : line.endIndex,
-        definitionIndex: line.startDot.closest(".right-column") ? line.startIndex : line.endIndex
-      }));
-      
-      // Сортируем и сравниваем с правильным ответом
-      const isCorrect = JSON.stringify(userAnswer.sort()) === JSON.stringify(question.correctAnswer.map((defIndex, imgIndex) => ({
-        imageIndex: imgIndex,
-        definitionIndex: defIndex
-      })).sort());
-      
-      if (isCorrect) {
-        score++;
-      }
-      answeredQuestions[currentQuestion] = true;
-    } else {
-      if (selectedAnswer === question.correctAnswer) {
-        score++;
-      }
-    }
+      const requiredPairs = question.correctAnswer.length; // Необходимое количество пар
+      const userPairs = permanentLines.length; // Текущее количество соединений
 
+  // Если пользователь не соединил все пары — не даем перейти дальше
+    if (userPairs < requiredPairs) {
+      alert("Соедините все изображения с определениями!");
+      return;
+  }
+
+  // Собираем ответ пользователя
+    const userAnswer = permanentLines.map(line => ({
+      imageIndex: line.startDot.closest(".left-column") ? line.startIndex : line.endIndex,
+      definitionIndex: line.startDot.closest(".right-column") ? line.startIndex : line.endIndex
+  }));
+
+  // Сравниваем с правильным ответом
+    const correctAnswer = question.correctAnswer.map((defIndex, imgIndex) => ({
+      imageIndex: imgIndex,
+      definitionIndex: defIndex
+  }));
+
+    const isCorrect =
+      JSON.stringify(userAnswer.sort()) ===
+      JSON.stringify(correctAnswer.sort());
+
+  // Увеличиваем счётчик правильных ответов, если ответ верный
+    if (isCorrect) {
+      score++;
+  }
+
+  // ✅ Сохраняем результат в массив selectedAnswers
+    selectedAnswers[currentQuestion] = isCorrect ? "correct" : "incorrect";
+    answeredQuestions[currentQuestion] = true;
+
+  } else {
+  // Обработка обычных вопросов
+    if (selectedAnswer === null) {
+      alert("Выберите ответ!");
+      return;
+  }
+
+    if (selectedAnswer === question.correctAnswer) {
+      score++;
+  }
+
+    selectedAnswers[currentQuestion] = selectedAnswer;
+    answeredQuestions[currentQuestion] = true;
+}
+    
     currentQuestion++;
     selectedAnswer = null;
 
