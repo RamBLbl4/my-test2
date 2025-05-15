@@ -910,8 +910,12 @@ function displayQuestion() {
   nextButton.style.display = "inline-block";
 
   nextButton.addEventListener("click", () => {
-  const question = testQuestions[currentQuestion];
+  if (selectedAnswer === null && question.type !== "matching") {
+    alert("Выберите ответ!");
+    return;
+  }
 
+  // ДОБАВЛЕНО: проверка количества пар в вопросах на соответствие
   if (question.type === "matching") {
     const requiredPairs = question.correctAnswer.length;
     const userPairs = permanentLines.length;
@@ -920,7 +924,10 @@ function displayQuestion() {
       alert("Соедините все изображения с определениями!");
       return;
     }
+  }
 
+  // ДОБАВЛЕНО: сохранение результата для всех типов вопросов
+  if (question.type === "matching") {
     const userAnswer = permanentLines.map(line => ({
       imageIndex: line.startDot.closest(".left-column") ? line.startIndex : line.endIndex,
       definitionIndex: line.startDot.closest(".right-column") ? line.startIndex : line.endIndex
@@ -931,39 +938,25 @@ function displayQuestion() {
       definitionIndex: defIndex
     }));
 
-    // Сортировка по imageIndex для корректного сравнения
     const sortedUser = [...userAnswer].sort((a, b) => a.imageIndex - b.imageIndex);
     const sortedCorrect = [...correctAnswer].sort((a, b) => a.imageIndex - b.imageIndex);
 
     const isCorrect = JSON.stringify(sortedUser) === JSON.stringify(sortedCorrect);
 
-    // Убираем предыдущий результат, если он был
     const prevAnswer = selectedAnswers[currentQuestion];
-    if (prevAnswer === "correct") {
-      score--;
-    }
+    if (prevAnswer === "correct") score--;
 
-    // Добавляем новый результат
-    if (isCorrect) {
-      score++;
-    }
+    if (isCorrect) score++;
 
     selectedAnswers[currentQuestion] = isCorrect ? "correct" : "incorrect";
     answeredQuestions[currentQuestion] = true;
 
   } else {
-    if (selectedAnswer === null) {
-      alert("Выберите ответ!");
-      return;
-    }
-
-    // Убираем предыдущий результат, если он был
     const prevAnswer = selectedAnswers[currentQuestion];
     if (prevAnswer !== null && prevAnswer === question.correctAnswer) {
       score--;
     }
 
-    // Добавляем новый результат
     if (selectedAnswer === question.correctAnswer) {
       score++;
     }
@@ -1063,23 +1056,19 @@ function showResults() {
     feedback.classList.add('answer-feedback');
 
     if (question.type === "matching") {
-  // Выводим правильные соответствия
   const correctMapping = question.correctAnswer.map((defIndex, imgIndex) =>
     `Изображение ${imgIndex + 1} → Определение ${defIndex + 1}`
   ).join(", ");
 
   feedback.textContent = `Правильные соответствия: ${correctMapping}`;
 
-  // Выводим результат: "Вы ответили верно" или "Вы ответили неправильно"
   const finalFeedback = document.createElement("div");
   finalFeedback.classList.add("matching-result");
   finalFeedback.textContent = selectedAnswers[index] === "correct"
     ? "Вы ответили верно."
     : "Вы ответили неправильно.";
   resultDiv.appendChild(finalFeedback);
-
 } else {
-  // Обработка обычных вопросов
   if (selectedAnswers[index] === question.correctAnswer) {
     feedback.textContent = `Вы ответили верно, правильный ответ: ${question.options[question.correctAnswer]}`;
   } else {
@@ -1087,7 +1076,6 @@ function showResults() {
   }
 }
 
-// Добавляем элемент с обратной связью в DOM
 resultDiv.appendChild(feedback);
 resultsContainer.appendChild(resultDiv);
 
