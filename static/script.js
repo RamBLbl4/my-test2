@@ -611,6 +611,9 @@ const questions7 = [
 
 ];
 
+
+  
+
 // Функция перемешивания
 function getRandomQuestions(arr, count) {
   const shuffled = arr.slice();
