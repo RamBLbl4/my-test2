@@ -59,5 +59,20 @@
   });
 </script>
 
+  <script>
+  // colorIndex = 0 (Красный), 1 (Зелёный), 2 (Синий)
+  const colorIndex = {{ colorIndex }};
+  // Пути к трём компонентам круга
+  const rUrl = "{{ url_for('static', filename='r_component.png') }}";
+  const gUrl = "{{ url_for('static', filename='g_component.png') }}";
+  const bUrl = "{{ url_for('static', filename='b_component.png') }}";
+  // Добавляем 12‑й вопрос: «Какого цвета был круг?»
+  testQuestions.push({
+    text: "Ниже представлены три RGB-компоненты изображения круга. Какого цвета был круг изначально?",
+    images: [rUrl, gUrl, bUrl],
+    options: ["Красный", "Зелёный", "Синий"],
+    correctAnswer: colorIndex
+  });
+</script>
 </body>
 </html>
