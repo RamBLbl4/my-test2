@@ -38,28 +38,7 @@
 
 <!-- Подключаем скрипт -->
 <script src="static/script.js"></script>
-
-<!-- Скрипты для динамического добавления вопросов -->
 <script>
-  // Укажи корректные пути к изображениям внутри папки static
-  const DCT0Url = "static/lenna.jpg";
-  const DCT1Url = "static/dct_idct_resultLENNA20.png";
-  const DCT2Url = "static/dct_quant_idct_resultLENNA20.png";
-
-  // Добавляем новый вопрос
-  testQuestions.push({
-    text: "Ниже представлены три изображения: первое исходное, а остальные после применения двух методов обработки. Какой метод применен ко второму изображению?",
-    images: [DCT0Url, DCT1Url, DCT2Url],
-    options: [
-      "Прямое и обратное ДКП",
-      "ДКП с квантованием и обратным ДКП",
-      "Метод не используется"
-    ],
-    correctAnswer: 0
-  });
-</script>
-
-  <script>
   // colorIndex = 0 (Красный), 1 (Зелёный), 2 (Синий)
   const colorIndex = {{ colorIndex }};
   // Пути к трём компонентам круга
