@@ -570,8 +570,45 @@ const questions6 = [
     correctAnswer: [0, 1, 2]
   }
 
+];
 
- 
+
+const questions7 = [
+
+{
+    
+  text: "Ниже представлены четыре изображения, первое исходное, а остальные после применения различных методов градационного преобразования. Какой метод градационного преобразования был применён ко второму изображению?",
+  images: [
+    "static/gray_original.png",  // Путь к первому изображению
+    "static/piecewise_result.png", // Путь ко второму изображению
+    "static/gamma_result.png",
+    "static/equalized_result.png"
+  ],
+  options: [
+      "Градационное преобразование на базе опорных точек",
+      "Гамма-преобразование",
+      "Выравнивание гистограмм"
+    ],
+    correctAnswer: 0
+  },
+
+{
+    
+  text: "Ниже представлены четыре изображения, первое исходное, а остальные после применения гамма-преобразования с различными значениями γ. Какое значение γ было использовано для четвертого изображения?",
+  images: [
+    "static/gray_original.png",  // Путь к первому изображению
+    "static/gamma_less_1.png", // Путь ко второму изображению
+    "static/gamma_equal_1.png",
+    "static/gamma_greater_1.png"
+  ],
+  options: [
+      "γ < 1",
+      "γ = 1",
+      "γ > 1"
+    ],
+    correctAnswer: 2
+  }
+
 ];
 
 // Функция перемешивания
@@ -585,12 +622,13 @@ function getRandomQuestions(arr, count) {
 }
 
 const testQuestions = [
-  ...getRandomQuestions(questions1, 0),
+  ...getRandomQuestions(questions1, 50),
   ...getRandomQuestions(questions2, 5),
   ...getRandomQuestions(questions3, 3),
   ...getRandomQuestions(questions4, 2),
   ...getRandomQuestions(questions5, 1),
-  ...getRandomQuestions(questions6, 3)
+  ...getRandomQuestions(questions6, 3),
+  ...getRandomQuestions(questions7, 2)
 ];
 
 let currentQuestion = 0;
