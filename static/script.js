@@ -1111,7 +1111,7 @@ function startTimer(duration) {
 }
 
 async function sendToGoogleForm(name, score) {
-  const formURL = 'https://docs.google.com/forms/d/1UHkqNtZLYR80Mri9RsgOitxaZjBSXjDeNF0AbLQ0yUg/prefill ';
+  const formURL = 'https://docs.google.com/forms/d/1UHkqNtZLYR80Mri9RsgOitxaZjBSXjDeNF0AbLQ0yUg/formResponse ';
 
   const formData = new URLSearchParams();
   formData.append('entry.1491364520', name);   // Поле "ФИО"
