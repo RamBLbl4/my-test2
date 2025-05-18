@@ -625,7 +625,7 @@ function getRandomQuestions(arr, count) {
 }
 
 const testQuestions = [
-  ...getRandomQuestions(questions1, 50),
+  ...getRandomQuestions(questions1, 0),
   ...getRandomQuestions(questions2, 5),
   ...getRandomQuestions(questions3, 3),
   ...getRandomQuestions(questions4, 2),
