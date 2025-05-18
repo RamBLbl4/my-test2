@@ -1037,6 +1037,7 @@ function updateQuestionNumbers() {
 function showResults() {
   startContainer.style.display = 'none';
   questionsContainer.style.display = 'none';
+  sendToGoogleForm(fullName, `${score}/${testQuestions.length}`);
   resultsContainer.innerHTML = `
     <div id="results-container">
       <h2>Результаты</h2>
@@ -1108,3 +1109,28 @@ function startTimer(duration) {
   }, 1000);
   return timerInterval;
 }
+
+async function sendToGoogleForm(name, score) {
+  const formURL = 'https://docs.google.com/forms/d/1UHkqNtZLYR80Mri9RsgOitxaZjBSXjDeNF0AbLQ0yUg/prefill ';
+
+  const formData = new URLSearchParams();
+  formData.append('entry.1491364520', name);   // Поле "ФИО"
+  formData.append('entry.1007343660', score);  // Поле "Результат"
+
+  try {
+    await fetch(formURL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
+
+    console.log('Данные успешно отправлены в Google Форму');
+  } catch (e) {
+    console.error('Ошибка при отправке в форму:', e);
+  }
+}
+
+
