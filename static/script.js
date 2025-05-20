@@ -691,12 +691,12 @@ function getRandomQuestions(arr, count) {
 
 const testQuestions = [
   ...getRandomQuestions(questions1, 1),
-  ...getRandomQuestions(questions2, 0),
-  ...getRandomQuestions(questions3, 0),
+  ...getRandomQuestions(questions2, 4),
+  ...getRandomQuestions(questions3, 3),
   ...getRandomQuestions(questions4, 6),
   ...getRandomQuestions(questions5, 2),
   ...getRandomQuestions(questions6, 3),
-  ...getRandomQuestions(questions7, 0)
+  ...getRandomQuestions(questions7, 2)
 ];
 
 let currentQuestion = 0;
