@@ -393,20 +393,6 @@ const questions2 = [
     "Pepper"   // Вариант 3
   ],
   correctAnswer: 1 
-  },
-
-  {
-    type: "matching",
-    text: "Соотнесите изображения с методами, которые к ним применены.",
-    images: [
-      "static/lenna_denoised_mean.png",
-      "static/lenna_denoised_mean222.png"
-    ],
-    definitions: [
-      "Скользящего среднего",
-      "Гауса"
-    ],
-    correctAnswer: [0, 1]
   }
 
 ];
@@ -467,9 +453,9 @@ const questions4 = [
     
   text: "Ниже представлены три изображения после применения трех методов интерполяции. Какой метод интерполяции применен ко второму изображению?",
   images: [
-    "static/interpolation_bilinear_ZOOMMAP.png",  // Путь к первому изображению
-    "static/interpolation_nearest_ZOOMMAP.png", // Путь ко второму изображению
-    "static/interpolation_bicubic_ZOOMMAP.png"  // Путь к третьему изображению
+    "static/interpolation_bilinear_sposobLOGO.png",  // Путь к первому изображению
+    "static/interpolation_nearest_sposobLOGO.png", // Путь ко второму изображению
+    "static/interpolation_bicubic_sposobLOGO.png"  // Путь к третьему изображению
   ],
   options: [
     "Интерполяция по ближайшему соседу",
@@ -485,15 +471,77 @@ const questions4 = [
     text: "Соотнесите изображения с методами интерполяции, которые к ним применены",
     images: [
       "static/interpolation_bilinear_ZOOMTEXT1.png",  // Путь к первому изображению
+      "static/interpolation_nearest_ZOOMTEXT1.png"
+    ],
+    definitions: [
+      "Интерполяция по ближайшему соседу",
+      "Билинейная интерполяция"
+    ],
+    correctAnswer: [1, 0]
+  },
+
+  {
+    type: "matching",
+    text: "Соотнесите изображения с методами интерполяции, которые к ним применены",
+    images: [
       "static/interpolation_nearest_ZOOMTEXT1.png", // Путь ко второму изображению
       "static/interpolation_bicubic_ZOOMTEXT1.png"  // Путь к третьему изображению
     ],
     definitions: [
       "Интерполяция по ближайшему соседу",
-      "Билинейная интерполяция",
       "Бикубическая интерполяция"
     ],
-    correctAnswer: [1, 0, 2]
+    correctAnswer: [0, 1]
+  },
+
+
+  {
+    type: "matching",
+    text: "Соотнесите изображения с методами интерполяции, которые к ним применены",
+    images: [
+      "static/interpolation_nearest_sposobNUMBER.png", // Путь ко второму изображению
+      "static/interpolation_bicubic_sposobNUMBER.png"  // Путь к третьему изображению
+    ],
+    definitions: [
+      "Интерполяция по ближайшему соседу",
+      "Бикубическая интерполяция"
+    ],
+    correctAnswer: [0, 1]
+  },
+
+
+
+
+  {
+    type: "matching",
+    text: "Соотнесите изображения с методами интерполяции, которые к ним применены",
+    images: [
+      "static/interpolation_bilinear_sposobNUMBER.png",
+      "static/interpolation_nearest_sposobNUMBER.png" 
+    ],
+    definitions: [
+      "Интерполяция по ближайшему соседу",
+      "Билинейная интерполяция"
+    ],
+    correctAnswer: [1, 0]
+  },
+
+
+{
+    
+  text: "Ниже представлены три изображения после применения трех методов интерполяции. Какой метод интерполяции применен ко второму изображению?",
+  images: [
+    "static/interpolation_bilinear_sposob.png",  // Путь к первому изображению
+    "static/interpolation_nearest_sposob.png", // Путь ко второму изображению
+    "static/interpolation_bicubic_sposob.png"  // Путь к третьему изображению
+  ],
+  options: [
+    
+    "Билинейная интерполяция",
+    "Бикубическая интерполяция",
+    "Интерполяция по ближайшему соседу"
+  ],
+  correctAnswer: 2
   }
 
 ];
@@ -506,18 +554,37 @@ const questions5 = [
     type: "matching",
     text: "Соотнесите изображения, к которым применено квантование, с параметром R",
     images: [
-      "static/dct_quant_idct_result_ZOOMLENNA30.png",  // Путь к первому изображению
-      "static/dct_quant_idct_result_ZOOMLENNA5.png",
+      "static/dct_quant_idct_result_sposob20LENNA.png",  // Путь к первому изображению
+      "static/dct_quant_idct_result_sposob9LENNA.png",
       "static/lenna.jpg" // Путь ко второму изображению
        
     ],
     definitions: [
-      "R=5",
+      "R=9",
       "R=20",
       "R=0(исходное)"
     ],
     correctAnswer: [1, 0, 2]
-  }
+  },
+
+  {
+    type: "matching",
+    text: "Соотнесите изображения, к которым применено квантование, с параметром R",
+    images: [
+      "static/dct_quant_idct_result_sposob7CAMERA.png",  // Путь к первому изображению
+      "static/dct_quant_idct_result_sposob20CAMERA.png",
+      "static/cameraman.jpg" // Путь ко второму изображению
+       
+    ],
+    definitions: [
+      "R=7",
+      "R=20",
+      "R=0(исходное)"
+    ],
+    correctAnswer: [0, 1, 2]
+  },
+
+
 ];
 
 
@@ -558,19 +625,19 @@ const questions6 = [
     type: "matching",
     text: "Соотнесите изображения, полученные после применения метода скользящего среднего, с апертурой",
     images: [
-      "static/metodsrednegoRGB.png",  // Путь к первому изображению
-      "static/metodsrednegoAper35.png",
-      "static/metodsrednegoAper15.png"  // Путь к третьему изображению
+      "static/metodsrednegoAPER3.png",  // Путь к первому изображению
+      "static/metodsrednegoAPER7.png",
+      "static/metodsrednegoAPER11.png"  // Путь к третьему изображению
     ],
     definitions: [
-      "7",
-      "35",
-      "15"
+      "3",
+      "11",
+      "7"
     ],
-    correctAnswer: [0, 1, 2]
+    correctAnswer: [0, 2, 1]
   }
-
 ];
+
 
 
 const questions7 = [
@@ -609,10 +676,8 @@ const questions7 = [
     correctAnswer: 2
   }
 
+
 ];
-
-
-  
 
 // Функция перемешивания
 function getRandomQuestions(arr, count) {
@@ -625,13 +690,13 @@ function getRandomQuestions(arr, count) {
 }
 
 const testQuestions = [
-  ...getRandomQuestions(questions1, 0),
-  ...getRandomQuestions(questions2, 5),
-  ...getRandomQuestions(questions3, 3),
-  ...getRandomQuestions(questions4, 2),
-  ...getRandomQuestions(questions5, 1),
+  ...getRandomQuestions(questions1, 1),
+  ...getRandomQuestions(questions2, 0),
+  ...getRandomQuestions(questions3, 0),
+  ...getRandomQuestions(questions4, 6),
+  ...getRandomQuestions(questions5, 2),
   ...getRandomQuestions(questions6, 3),
-  ...getRandomQuestions(questions7, 2)
+  ...getRandomQuestions(questions7, 0)
 ];
 
 let currentQuestion = 0;
