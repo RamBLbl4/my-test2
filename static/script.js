@@ -554,14 +554,14 @@ const questions5 = [
     type: "matching",
     text: "Соотнесите изображения, к которым применено квантование, с параметром R",
     images: [
-      "static/dct_quant_idct_result_sposob20LENNA.png",  // Путь к первому изображению
-      "static/dct_quant_idct_result_sposob9LENNA.png",
+      "static/dct_quant_idct_result_sposobzoom9.png",  // Путь к первому изображению
+      "static/dct_quant_idct_result_sposobzoom2.png",
       "static/lenna.jpg" // Путь ко второму изображению
        
     ],
     definitions: [
+      "R=2",
       "R=9",
-      "R=20",
       "R=0(исходное)"
     ],
     correctAnswer: [1, 0, 2]
@@ -571,14 +571,14 @@ const questions5 = [
     type: "matching",
     text: "Соотнесите изображения, к которым применено квантование, с параметром R",
     images: [
-      "static/dct_quant_idct_result_sposob7CAMERA.png",  // Путь к первому изображению
-      "static/dct_quant_idct_result_sposob20CAMERA.png",
+      "static/dct_quant_idct_result_sposobzoom2CAMERA.png",  // Путь к первому изображению
+      "static/dct_quant_idct_result_sposobzoom9CAMERA.png",
       "static/cameraman.jpg" // Путь ко второму изображению
        
     ],
     definitions: [
-      "R=7",
-      "R=20",
+      "R=2",
+      "R=9",
       "R=0(исходное)"
     ],
     correctAnswer: [0, 1, 2]
@@ -625,16 +625,16 @@ const questions6 = [
     type: "matching",
     text: "Соотнесите изображения, полученные после применения метода скользящего среднего, с апертурой",
     images: [
-      "static/metodsrednegoAPER3.png",  // Путь к первому изображению
-      "static/metodsrednegoAPER7.png",
-      "static/metodsrednegoAPER11.png"  // Путь к третьему изображению
+      "static/metodsrednegoAPER11.png",  // Путь к первому изображению
+      "static/metodsrednegoAPER3.png",
+      "static/metodsrednegoAPER7.png"  // Путь к третьему изображению
     ],
     definitions: [
       "3",
       "11",
       "7"
     ],
-    correctAnswer: [0, 2, 1]
+    correctAnswer: [1, 0, 2]
   }
 ];
 
