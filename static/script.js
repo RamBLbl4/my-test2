@@ -675,9 +675,46 @@ const questions7 = [
     ],
     correctAnswer: 2
   }
-
-
+  
 ];
+
+const questions8 = [
+{
+    
+  text: "Ниже представлены три RGB-компоненты изображения круга. Какого цвета был круг изначально??",
+  images: [
+    "static/blue_b.png",  // Путь к первому изображению
+    "static/blue_r.png", // Путь ко второму изображению
+    "static/blue_g.png"
+  ],
+  options: ["Красный", "Зелёный", "Синий"],
+    correctAnswer: 2
+  },
+  {
+    
+  text: "Ниже представлены три RGB-компоненты изображения круга. Какого цвета был круг изначально??",
+  images: [
+    "static/green_b.png",  // Путь к первому изображению
+    "static/green_g.png", // Путь ко второму изображению
+    "static/green_r.png"
+  ],
+  options: ["Красный", "Зелёный", "Синий"],
+    correctAnswer: 1
+  },
+  {
+    
+  text: "Ниже представлены три RGB-компоненты изображения круга. Какого цвета был круг изначально??",
+  images: [
+    "static/red_r.png",  // Путь к первому изображению
+    "static/red_b.png", // Путь ко второму изображению
+    "static/red_g.png"
+  ],
+  options: ["Красный", "Зелёный", "Синий"],
+    correctAnswer: 0
+  }
+];
+  
+    
 
 // Функция перемешивания
 function getRandomQuestions(arr, count) {
@@ -690,13 +727,14 @@ function getRandomQuestions(arr, count) {
 }
 
 const testQuestions = [
-  ...getRandomQuestions(questions1, 3),
-  ...getRandomQuestions(questions2, 4),
-  ...getRandomQuestions(questions3, 3),
-  ...getRandomQuestions(questions4, 6),
-  ...getRandomQuestions(questions5, 2),
-  ...getRandomQuestions(questions6, 3),
-  ...getRandomQuestions(questions7, 2)
+  ...getRandomQuestions(questions1, 0),
+  ...getRandomQuestions(questions2, 0),
+  ...getRandomQuestions(questions3, 0),
+  ...getRandomQuestions(questions4, 0),
+  ...getRandomQuestions(questions5, 0),
+  ...getRandomQuestions(questions6, 0),
+  ...getRandomQuestions(questions7, 0),
+  ...getRandomQuestions(questions8, 3)
 ];
 
 let currentQuestion = 0;
